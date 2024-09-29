@@ -5,13 +5,14 @@ pipeline {
     options {
         timeout(time: 30, unit: 'MINUTES')
         disableConcurrentBuilds()
+        ansicolor('xterm')
     }
     stages {
         stage('Init') {
             steps {
                sh """
                  cd 01-vpc
-                 terraform init
+                 terraform init -reconfigure
                """
             }
         }
